@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #f39c12, #e74c3c);
+    background-size: 400% 400%;
+    animation: gradientAnimation 8s ease infinite;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin: 0;
+    background: linear-gradient(45deg, #f39c12, #e74c3c, #8e44ad, #3498db);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradientAnimation 8s ease infinite, headerText 1.5s ease-in-out infinite alternate;
+}
+
+.instructions {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instructions h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #e74c3c;
+}
+
+.instructions p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 10px;
+}
+
+.status {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+#moves, #timer {
+    font-size: 1.3rem;
+    color: #e74c3c;
+    animation: statusAnimation 1s ease-in-out infinite alternate;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-top:50px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card.flipped {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    background-color: #28a745;
+    color: white;
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#resetButton {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#resetButton:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 1rem;
+    color: #fff;
+    font-style: italic;
+    background-color: #333;
+    border-radius: 10px;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+}
+
+footer .social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(4, 80px);
+        grid-template-rows: repeat(4, 80px);
+    }
+
+    .card {
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+    }
+
+    .status {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .instructions {
+        max-width: 90%;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+    }
+
+    .card {
+        width: 70px;
+        height: 70px;
+        font-size: 18px;
+    }
+
+    .status {
+        flex-direction: column;
+        font-size: 1rem;
+    }
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes headerText {
+    0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); }
+    100% { text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6); }
+}
+
+@keyframes statusAnimation {
+    0% { color: #e74c3c; }
+    100% { color: #c0392b; }
+}
